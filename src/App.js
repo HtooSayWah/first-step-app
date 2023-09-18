@@ -1,13 +1,38 @@
-import './App.css';
-import Form from "./Form"
+// import './App.css';
+// import Form from "./Form"
 
-function App() {
-return (
-<div className="App">
-<Form />
-</div>
+// function App() {
+// return (
+// <div className="App">
+// <Form />
+// </div>
 
-);
+// );
+// }
+
+// export default App;
+
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./view/Layout";
+import Counter  from "./view/counter";
+import './css/App.css';
+import Form from "./view/Form";
+import 'bootstrap/dist/css/bootstrap.css';
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+            <Route path="/" element={<Layout />}>
+            <Route index element={<Form />} />
+            <Route path="form" element={<Form />} />
+            <Route path="counter" element={<Counter />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);

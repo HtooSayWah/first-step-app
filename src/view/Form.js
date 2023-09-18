@@ -1,5 +1,8 @@
 import {useState} from 'react';
 import axios from "axios";
+import '../css/style.css';
+import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 export default function Form(){
     //States for registration
     const [name, setName]= useState('');
@@ -29,6 +32,7 @@ export default function Form(){
     //Handling the Email change
     const handleSubmit = (e)=>{
         e.preventDefault();
+        console.log(" I am in the handleSubmit function ")
         if(name === '' || email === '' || password === ''){
             setError(true);
         }else{
@@ -51,47 +55,58 @@ export default function Form(){
     }
     const successMessage = ()=>{
         return(
-            <div className="success"
-            style={{display:submitted?'':'none'}}>
-                <h1>User {name} successfully registered</h1>
-
+            <div>      
+              <p> this is submitted value {submitted}</p>         
+              {submitted?
+                <Alert key="success" variant="success">
+                  <h1>User {name} successfully registered</h1>
+                </Alert>: <b></b>
+              }
             </div>
+            
+            
         );
     }
     const errorMessage = ()=>{
         return(
-            <div className="error"
-            style={{display:error?'':'none'}}>
+            <div>   
+              <p> this is submitted value {submitted} </p>               
+            {error?
+              <Alert key="danger" variant="danger">
                 <h1>Please enter all the fields</h1>
-
-            </div>
+              </Alert>: <b></b>
+            }
+          </div>
         );
     }
 
     return(
-        <div className = "form">
-            <div><h1> User Registration</h1></div>
-            {/* calling to the methods*/}
+   
+      <div className = "form">
+      <div><h1> User Registration</h1></div>
+      {/* calling to the methods*/}
 
-            <div className = "messages">
-                {errorMessage()}
-                {successMessage()}
-            </div>
-            <form>
-                {/* Labels and inputs for form data*/}
-                <label className='label'>Name</label>
-                <input onChange={handleName} className='input' value={name} type='text'></input>
+      <div className = "messages">
+        {successMessage()}
+        {errorMessage()}
+      </div>
+      <form>
+          {/* Labels and inputs for form data*/}
+          <label className='label'>Name</label>
+          <input onChange={handleName} className='input' value={name} type='text'></input>
 
-                <label className='label'>Email</label>
-                <input onChange={handleEmail} className='input' value={email} type='email'></input>
+          <label className='label'>Email</label>
+          <input onChange={handleEmail} className='input' value={email} type='email'></input>
 
-                <label className='label'>Password</label>
-                <input onChange={handlePassword} className='input' value={password} type='password'></input>
-            
-                <button onClick={handleSubmit} className='btn' type='submit'>Submit</button>
-            </form>
+          <label className='label'>Password</label>
+          <input onChange={handlePassword} className='input' value={password} type='password'></input>
+      
+          
+          <Button onClick={handleSubmit} className='btn' type='submit' variant="primary">Submit</Button>{' '}
+      </form>
 
-        </div>
+  </div>
+
 
     );
 
