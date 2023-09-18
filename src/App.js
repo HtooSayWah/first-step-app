@@ -17,7 +17,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./view/Layout";
 import Counter  from "./view/counter";
 import './css/App.css';
-import Form from "./view/Form";
+import SignUP from "./view/Form";
 import 'bootstrap/dist/css/bootstrap.css';
 
 export default function App() {
@@ -25,8 +25,8 @@ export default function App() {
     <BrowserRouter>
       <Routes>
             <Route path="/" element={<Layout />}>
-            <Route index element={<Form />} />
-            <Route path="form" element={<Form />} />
+            <Route index element={<SignUP />} />
+            <Route path="form" element={<SignUP />} />
             <Route path="counter" element={<Counter />} />
         </Route>
       </Routes>

@@ -3,7 +3,10 @@ import axios from "axios";
 import '../css/style.css';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
-export default function Form(){
+import Form from 'react-bootstrap/Form';
+
+
+export default function SignUP(){
     //States for registration
     const [name, setName]= useState('');
     const [email, setEmail] = useState('');
@@ -32,7 +35,8 @@ export default function Form(){
     //Handling the Email change
     const handleSubmit = (e)=>{
         e.preventDefault();
-        console.log(" I am in the handleSubmit function ")
+        
+        <p>this is name {name} and {email} and {password}</p>
         if(name === '' || email === '' || password === ''){
             setError(true);
         }else{
@@ -56,7 +60,7 @@ export default function Form(){
     const successMessage = ()=>{
         return(
             <div>      
-              <p> this is submitted value {submitted}</p>         
+                      
               {submitted?
                 <Alert key="success" variant="success">
                   <h1>User {name} successfully registered</h1>
@@ -70,7 +74,7 @@ export default function Form(){
     const errorMessage = ()=>{
         return(
             <div>   
-              <p> this is submitted value {submitted} </p>               
+                          
             {error?
               <Alert key="danger" variant="danger">
                 <h1>Please enter all the fields</h1>
@@ -92,16 +96,23 @@ export default function Form(){
       </div>
       <form>
           {/* Labels and inputs for form data*/}
-          <label className='label'>Name</label>
-          <input onChange={handleName} className='input' value={name} type='text'></input>
-
-          <label className='label'>Email</label>
-          <input onChange={handleEmail} className='input' value={email} type='email'></input>
-
-          <label className='label'>Password</label>
-          <input onChange={handlePassword} className='input' value={password} type='password'></input>
+ 
       
-          
+          <Form>
+            <Form.Group className="mb-3" controlId="name">
+              <Form.Label>Name</Form.Label>
+              <Form.Control type="text" placeholder="Your Name" onChange={handleName} value={name} />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="email">
+              <Form.Label>Email</Form.Label>
+              <Form.Control type="email"onChange={handleEmail}  value={email} placeholder="Your Email" />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="email">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="password" placeholder="Your Password" value={password}   onChange={handlePassword} />
+            </Form.Group>
+            
+          </Form>
           <Button onClick={handleSubmit} className='btn' type='submit' variant="primary">Submit</Button>{' '}
       </form>
 

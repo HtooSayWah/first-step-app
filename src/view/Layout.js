@@ -22,12 +22,12 @@ const Layout = () => {
             Counter
           </NavLink>
           <NavLink to='/form' activeStyle>
-            Form
+            Sign up
           </NavLink>
          
-          <NavLink to='/sign-up' activeStyle>
-            Sign Up
-          </NavLink>
+          {/* <NavLink to='/form' activeStyle>
+          Sign up
+          </NavLink> */}
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
